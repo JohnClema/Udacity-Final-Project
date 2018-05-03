@@ -30,11 +30,11 @@ class PictureOfTheDayViewController: UIViewController, UITableViewDelegate, UITa
 //        self.view.addSubview(card)
     }
     
-    func initCard() -> CardHighlight {
-        let frame = self.tableView!.frame
-        
-        return card
-    }
+//    func initCard() -> CardHighlight {
+//        let frame = self.tableView!.frame
+//
+//        return card
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.width * 1.6
@@ -48,8 +48,8 @@ class PictureOfTheDayViewController: UIViewController, UITableViewDelegate, UITa
         
         let cell: UITableViewCell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel!.text = "Nice"
-        let card = self.initCard()
-        cell.addSubview(card)
+//        let card = self.initCard()
+//        cell.addSubview(card)
         return cell
     }
     
