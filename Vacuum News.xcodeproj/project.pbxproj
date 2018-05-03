@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		057B333C2086C84F0098CAB9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B333B2086C84F0098CAB9 /* Service.swift */; };
+		057B333E2086C8B00098CAB9 /* NASAPictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B333D2086C8B00098CAB9 /* NASAPictureService.swift */; };
+		05D6C1122096B50F0067B0CD /* PictureOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1112096B50F0067B0CD /* PictureOfTheDayViewController.swift */; };
+		05D6C1142096B5F20067B0CD /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */; };
+		05D6C1162096B5FD0067B0CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1152096B5FD0067B0CD /* SettingsViewController.swift */; };
+		05D6C1182096BBC00067B0CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1172096BBC00067B0CD /* Constants.swift */; };
+		05DA9B54207B744800036BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA9B53207B744800036BA4 /* AppDelegate.swift */; };
+		05DA9B5D207B744A00036BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05DA9B5C207B744A00036BA4 /* Assets.xcassets */; };
+		05DA9B60207B744A00036BA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DA9B5E207B744A00036BA4 /* LaunchScreen.storyboard */; };
+		2A6FD99299E116FDB67285F8 /* Pods_Vacuum_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD97C7F23AAE04876BF1E828 /* Pods_Vacuum_News.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		057B333B2086C84F0098CAB9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		057B333D2086C8B00098CAB9 /* NASAPictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAPictureService.swift; sourceTree = "<group>"; };
+		05D6C1112096B50F0067B0CD /* PictureOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureOfTheDayViewController.swift; sourceTree = "<group>"; };
+		05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		05D6C1152096B5FD0067B0CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		05D6C1172096BBC00067B0CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		05DA9B50207B744800036BA4 /* Vacuum News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vacuum News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05DA9B53207B744800036BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		05DA9B5C207B744A00036BA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05DA9B5F207B744A00036BA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		05DA9B61207B744A00036BA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F006AE5A4DD96E5E352DE54D /* Pods-Vacuum News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vacuum News.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vacuum News/Pods-Vacuum News.release.xcconfig"; sourceTree = "<group>"; };
+		F11CD268EB1C8F19C08E5F5B /* Pods-Vacuum News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vacuum News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vacuum News/Pods-Vacuum News.debug.xcconfig"; sourceTree = "<group>"; };
+		FD97C7F23AAE04876BF1E828 /* Pods_Vacuum_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vacuum_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05DA9B4D207B744800036BA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A6FD99299E116FDB67285F8 /* Pods_Vacuum_News.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		057B333A2086C8330098CAB9 /* Web Services */ = {
+			isa = PBXGroup;
+			children = (
+				057B333B2086C84F0098CAB9 /* Service.swift */,
+				057B333D2086C8B00098CAB9 /* NASAPictureService.swift */,
+				05D6C1172096BBC00067B0CD /* Constants.swift */,
+			);
+			path = "Web Services";
+			sourceTree = "<group>";
+		};
+		057B333F2086CAD50098CAB9 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		05DA9B47207B744800036BA4 = {
+			isa = PBXGroup;
+			children = (
+				05DA9B52207B744800036BA4 /* Vacuum News */,
+				05DA9B51207B744800036BA4 /* Products */,
+				3EAFDE146461A6A837D57CB4 /* Pods */,
+				7A7119E43E48628D6A8C79CD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		05DA9B51207B744800036BA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05DA9B50207B744800036BA4 /* Vacuum News.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05DA9B52207B744800036BA4 /* Vacuum News */ = {
+			isa = PBXGroup;
+			children = (
+				057B333F2086CAD50098CAB9 /* Storage */,
+				057B333A2086C8330098CAB9 /* Web Services */,
+				05DA9B53207B744800036BA4 /* AppDelegate.swift */,
+				05D6C1112096B50F0067B0CD /* PictureOfTheDayViewController.swift */,
+				05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */,
+				05D6C1152096B5FD0067B0CD /* SettingsViewController.swift */,
+				05DA9B5C207B744A00036BA4 /* Assets.xcassets */,
+				05DA9B5E207B744A00036BA4 /* LaunchScreen.storyboard */,
+				05DA9B61207B744A00036BA4 /* Info.plist */,
+			);
+			path = "Vacuum News";
+			sourceTree = "<group>";
+		};
+		3EAFDE146461A6A837D57CB4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F11CD268EB1C8F19C08E5F5B /* Pods-Vacuum News.debug.xcconfig */,
+				F006AE5A4DD96E5E352DE54D /* Pods-Vacuum News.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7A7119E43E48628D6A8C79CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD97C7F23AAE04876BF1E828 /* Pods_Vacuum_News.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05DA9B4F207B744800036BA4 /* Vacuum News */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05DA9B64207B744A00036BA4 /* Build configuration list for PBXNativeTarget "Vacuum News" */;
+			buildPhases = (
+				51A36017ECF651D9CFB9FC84 /* [CP] Check Pods Manifest.lock */,
+				05DA9B4C207B744800036BA4 /* Sources */,
+				05DA9B4D207B744800036BA4 /* Frameworks */,
+				05DA9B4E207B744800036BA4 /* Resources */,
+				3971966F96A4C770EC453CF3 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vacuum News";
+			productName = "Vacuum News";
+			productReference = 05DA9B50207B744800036BA4 /* Vacuum News.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05DA9B48207B744800036BA4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "John Clema";
+				TargetAttributes = {
+					05DA9B4F207B744800036BA4 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 05DA9B4B207B744800036BA4 /* Build configuration list for PBXProject "Vacuum News" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05DA9B47207B744800036BA4;
+			productRefGroup = 05DA9B51207B744800036BA4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05DA9B4F207B744800036BA4 /* Vacuum News */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05DA9B4E207B744800036BA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DA9B60207B744A00036BA4 /* LaunchScreen.storyboard in Resources */,
+				05DA9B5D207B744A00036BA4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3971966F96A4C770EC453CF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Vacuum News/Pods-Vacuum News-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vacuum News/Pods-Vacuum News-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51A36017ECF651D9CFB9FC84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vacuum News-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05DA9B4C207B744800036BA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057B333E2086C8B00098CAB9 /* NASAPictureService.swift in Sources */,
+				05D6C1122096B50F0067B0CD /* PictureOfTheDayViewController.swift in Sources */,
+				057B333C2086C84F0098CAB9 /* Service.swift in Sources */,
+				05D6C1142096B5F20067B0CD /* ArchiveViewController.swift in Sources */,
+				05D6C1182096BBC00067B0CD /* Constants.swift in Sources */,
+				05DA9B54207B744800036BA4 /* AppDelegate.swift in Sources */,
+				05D6C1162096B5FD0067B0CD /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		05DA9B5E207B744A00036BA4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05DA9B5F207B744A00036BA4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05DA9B62207B744A00036BA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		05DA9B63207B744A00036BA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05DA9B65207B744A00036BA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11CD268EB1C8F19C08E5F5B /* Pods-Vacuum News.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQSR5T8AG4;
+				INFOPLIST_FILE = "Vacuum News/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-News";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05DA9B66207B744A00036BA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F006AE5A4DD96E5E352DE54D /* Pods-Vacuum News.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQSR5T8AG4;
+				INFOPLIST_FILE = "Vacuum News/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-News";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05DA9B4B207B744800036BA4 /* Build configuration list for PBXProject "Vacuum News" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05DA9B62207B744A00036BA4 /* Debug */,
+				05DA9B63207B744A00036BA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05DA9B64207B744A00036BA4 /* Build configuration list for PBXNativeTarget "Vacuum News" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05DA9B65207B744A00036BA4 /* Debug */,
+				05DA9B66207B744A00036BA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05DA9B48207B744800036BA4 /* Project object */;
+}
