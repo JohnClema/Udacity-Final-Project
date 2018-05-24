@@ -45,9 +45,11 @@ struct CoreDataStackManager {
         // Create a persistingContext (private queue) and a child one (main queue)
         // create a context and add connect it to the coordinator
         persistingContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        persistingContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
         persistingContext.persistentStoreCoordinator = coordinator
         
         context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
         context.parent = persistingContext
         
         // Create a background context child of main context

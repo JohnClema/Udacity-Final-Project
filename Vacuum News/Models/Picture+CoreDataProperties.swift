@@ -11,9 +11,9 @@ import CoreData
 
 
 extension Picture {
-//    @nonobjc public class func fetchRequest() -> NSFetchRequest<Picture> {
-//        return NSFetchRequest<Picture>(entityName: "Picture")
-//    }
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Picture> {
+        return NSFetchRequest<Picture>(entityName: self.entityName())
+    }
 
     @NSManaged public var title: String?
     @NSManaged public var explanation: String?

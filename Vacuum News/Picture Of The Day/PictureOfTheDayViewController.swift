@@ -26,7 +26,8 @@ class PictureOfTheDayViewController: UIViewController {
     var collectionView: UICollectionView?
     var startDateLoaded: Date?
     var endDateLoaded: Date?
-    
+    let refreshControl = UIRefreshControl()
+
     var selectedIndexes   = [IndexPath]()
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths : [IndexPath]!
@@ -36,6 +37,17 @@ class PictureOfTheDayViewController: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Picture> = {
+        let fetchRequest = NSFetchRequest<Picture>(entityName: Picture.entityName())
+        let sortDescriptor = NSSortDescriptor(key: "dateString", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController<Picture>(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,88 +55,81 @@ class PictureOfTheDayViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         self.collectionView?.backgroundColor = UIColor.white
         self.navigationController?.view.backgroundColor = UIColor.white
+        
         self.navigationController?.isNavigationBarHidden = true
         
         let flowLayout = UICollectionViewFlowLayout()
-
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         let cellNib = UINib(nibName: "PictureOfTheDayCell", bundle: nil)
         self.collectionView?.register(cellNib, forCellWithReuseIdentifier: PictureOfTheDayCell.reuseIdentifier)
-
         self.view.addSubview(self.collectionView!)
         
-        do {
-            try fetchedResultsController.performFetch()
-        } catch (let error) {
-            print(error.localizedDescription)
+        self.collectionView?.alwaysBounceVertical = true
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            collectionView?.refreshControl = refreshControl
+        } else {
+            collectionView?.addSubview(refreshControl)
         }
+        
+        performFetch()
         
         self.pictures = fetchedResultsController.fetchedObjects!
 
         if pictures.isEmpty {
             getNextPhotos(fromDate: Date())
         }
-        self.collectionView?.reloadData()
     }
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Picture> = {
-        let fetchRequest = NSFetchRequest<Picture>(entityName: Picture.entityName())
-//        fetchRequest.predicate = NSPredicate(format: "pin == %@", self.pin!)
-        let sortDescriptor = NSSortDescriptor(key: "dateString", ascending: true)
-        fetchRequest.sortDescriptors = []
-        
-        let fetchedResultsController = NSFetchedResultsController<Picture>(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        return fetchedResultsController
-    }()
-    
-    func getNextPhotos(fromDate: Date) {
-        var timeInterval = DateComponents()
-        timeInterval.day = -28
-        let startDate = Calendar.current.date(byAdding: timeInterval, to: fromDate)!
-        NASAAPODClient.sharedInstance().getPhotos(startDate: startDate, endDate: fromDate) { (success, error) in
-            performUIUpdatesOnMain {
-                self.collectionView?.reloadData()
-            }
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch (let error) {
+            print(error.localizedDescription)
         }
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 430
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return .count
-//    }
-//
-//    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: PictureOfTheDayTableViewCell.reuseIdentifier)
-//        cell?.imageView?.kf.cancelDownloadTask()
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: PictureOfTheDayTableViewCell.reuseIdentifier, for: indexPath) as! PictureOfTheDayTableViewCell
-//        cell.title!.text = picture.title
-//        let url = URL(string: picture.urlString!)!
-//        if(picture.mediaType! == "image") {
-//            cell.pictureOfTheDay!.kf.indicatorType = .activity
-//            cell.pictureOfTheDay!.kf.setImage(with: url)
-//            cell.pictureOfTheDay.contentMode = .scaleAspectFill
-//        }
-//        if(picture.mediaType! == "video") {
-//
-//        }
-//        return cell
-//    }
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Weather Data
+        getNextPhotos(fromDate: Date())
+    }
     
+    func getNextPage() {
+        if self.startDateLoaded != nil {
+            getNextPhotos(fromDate: self.startDateLoaded!)
+        }
+    }
     
+    func getNextPhotos(fromDate: Date) {
+        var timeInterval = DateComponents()
+        timeInterval.day = -27
+        let startDate = Calendar.current.date(byAdding: timeInterval, to: fromDate)!
+        NASAAPODClient.sharedInstance().getPhotos(startDate: startDate, endDate: fromDate) { (success, error) in
+            performUIUpdatesOnMain {
+                self.performFetch()
+                self.startDateLoaded = startDate
+                self.endDateLoaded = fromDate
+                self.collectionView?.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
 }
 
 extension PictureOfTheDayViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.collectionView != nil {
+            let currentOffset = self.collectionView!.contentOffset.y;
+            let maximumOffset = self.collectionView!.contentSize.height - scrollView.frame.size.height;
+            
+            if (maximumOffset - currentOffset <= -60) {
+                getNextPage()
+            }
+        }
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if let sections = fetchedResultsController.sections {
@@ -167,7 +172,7 @@ extension PictureOfTheDayViewController : UICollectionViewDataSource, UICollecti
                 cell.pictureOfTheDay?.kf.setImage(with: url)
                 cell.pictureOfTheDay.contentMode = .scaleAspectFill
             }
-            if(picture.mediaType! == "video") {
+            if(picture.mediaType == "video") {
                 
             }
         }
