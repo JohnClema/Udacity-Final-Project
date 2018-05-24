@@ -7,5 +7,5 @@ target 'Vacuum News' do
 
   # Pods for Vacuum News
   pod 'Cards'
-
+  pod 'Kingfisher', '~> 4.0'
 end

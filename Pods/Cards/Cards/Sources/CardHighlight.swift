@@ -10,15 +10,69 @@ import UIKit
 
 @IBDesignable open class CardHighlight: Card {
 
-    @IBInspectable public var title: String = "welcome/n to cards/n XI !"
+    /**
+     Text of the title label.
+     */
+    @IBInspectable public var title: String = "welcome \nto \ncards !" {
+        didSet{
+            titleLbl.text = title.uppercased()
+            titleLbl.lineHeight(0.70)
+        }
+    }
+    /**
+     Max font size the title label.
+     */
     @IBInspectable public var titleSize:CGFloat = 26
-    @IBInspectable public var itemTitle: String = "Flappy Bird"
+    /**
+     Text of the title label of the item at the bottom.
+     */
+    @IBInspectable public var itemTitle: String = "Flappy Bird" {
+        didSet{
+            itemTitleLbl.text = itemTitle
+        }
+    }
+    /**
+     Max font size the subtitle label of the item at the bottom.
+     */
     @IBInspectable public var itemTitleSize: CGFloat = 16
-    @IBInspectable public var itemSubtitle: String = "Flap that !"
+    /**
+     Text of the subtitle label of the item at the bottom.
+     */
+    @IBInspectable public var itemSubtitle: String = "Flap that !" {
+        didSet{
+            itemSubtitleLbl.text = itemSubtitle
+        }
+    }
+    /**
+     Max font size the subtitle label of the item at the bottom.
+     */
     @IBInspectable public var itemSubtitleSize: CGFloat = 14
-    @IBInspectable public var icon: UIImage?
-    @IBInspectable public var iconRadius: CGFloat = 16
-    @IBInspectable public var buttonText: String = "view"
+    /**
+     Image displayed in the icon ImageView.
+     */
+    @IBInspectable public var icon: UIImage? {
+        didSet{
+            iconIV.image = icon
+            bgIconIV.image = icon
+        }
+    }
+    /**
+     Corner radius for the icon ImageView
+     */
+    @IBInspectable public var iconRadius: CGFloat = 16 {
+        didSet{
+            iconIV.layer.cornerRadius = iconRadius
+            bgIconIV.layer.cornerRadius = iconRadius*2
+        }
+    }
+    /**
+     Text for the card's button.
+     */
+    @IBInspectable public var buttonText: String = "view" {
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
     
     //Priv Vars
     private var iconIV = UIImageView()
@@ -45,14 +99,13 @@ import UIKit
     override  func initialize() {
         super.initialize()
         
-        self.delegate = self
         actionBtn.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         
         backgroundIV.addSubview(iconIV)
         backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(itemTitleLbl)
         backgroundIV.addSubview(itemSubtitleLbl)
-        detailSV.addSubview(actionBtn)
+        backgroundIV.addSubview(actionBtn)
         
         if backgroundImage == nil {  backgroundIV.addSubview(bgIconIV); }
         else { bgIconIV.alpha = 0 }
@@ -66,7 +119,6 @@ import UIKit
         bgIconIV.image = icon
         bgIconIV.alpha = backgroundImage != nil ? 0 : 0.6
         bgIconIV.clipsToBounds = true
-        
         
         iconIV.image = icon
         iconIV.clipsToBounds = true
@@ -104,15 +156,16 @@ import UIKit
         let btnTitle = NSAttributedString(string: buttonText.uppercased(), attributes: [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16, weight: .black), NSAttributedStringKey.foregroundColor : self.tintColor])
         actionBtn.setAttributedTitle(btnTitle, for: .normal)
         
-        btnWidth = CGFloat((buttonText.characters.count + 2) * 10)
+        btnWidth = CGFloat((buttonText.count + 2) * 10)
         
-        layout(backgroundIV.frame, animated: true, showingDetail: false)
+        layout()
         
     }
     
-    private func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    override func layout(animating: Bool = true) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.frame)
         
         iconIV.frame = CGRect(x: insets,
                               y: insets,
@@ -120,7 +173,7 @@ import UIKit
                               height: gimme.Y(25))
         
         titleLbl.frame.origin = CGPoint(x: insets, y: gimme.Y(5, from: iconIV))
-        titleLbl.frame.size.width = (originalFrame.width * 0.65) + ((rect.width - originalFrame.width)/3)
+        titleLbl.frame.size.width = (originalFrame.width * 0.65) + ((backgroundIV.bounds.width - originalFrame.width)/3)
         titleLbl.frame.size.height = gimme.Y(35)
         
         itemSubtitleLbl.sizeToFit()
@@ -133,12 +186,11 @@ import UIKit
         
         bgIconIV.transform = CGAffineTransform.identity
         
-        guard animated else { return }
         
         iconIV.layer.cornerRadius = iconRadius
         
         bgIconIV.frame.size = CGSize(width: iconIV.bounds.width * 2, height: iconIV.bounds.width * 2)
-        bgIconIV.frame.origin = CGPoint(x: gimme.RevX(0, width: bgIconIV.frame.width) + gimme.Width(40, of: bgIconIV) , y: 0)
+        bgIconIV.frame.origin = CGPoint(x: gimme.RevX(0, width: bgIconIV.frame.width) + LayoutHelper.Width(40, of: bgIconIV) , y: 0)
         
         
         bgIconIV.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/6))
@@ -149,17 +201,9 @@ import UIKit
                                  width: btnWidth,
                                  height: 32)
         actionBtn.layer.cornerRadius = actionBtn.layer.bounds.height/2
-        actionBtn.removeFromSuperview()
-        if showingDetail { detailSV.addSubview(actionBtn) }
-        else { self.addSubview(actionBtn) }
-        
     }
    
     //Actions
-    override  func cardTapped() {
-        super.cardTapped()
-        delegate?.cardDidTapInside?(card: self)
-    }
     
     @objc  func buttonTapped(){
         UIView.animate(withDuration: 0.2, animations: {
@@ -171,18 +215,6 @@ import UIKit
         }
         delegate?.cardHighlightDidTapButton?(card: self, button: actionBtn)
     }
-}
-
-extension CardHighlight: CardDelegate {
-    
-    public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.frame, animated: true, showingDetail: true)
-    }
-
-    public func cardIsHidingDetail(card: Card) {
-        layout(originalFrame, animated: true, showingDetail: false)
-    }
-    
 }
 
 

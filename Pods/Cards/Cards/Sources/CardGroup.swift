@@ -11,11 +11,38 @@ import UIKit
 @IBDesignable open class CardGroup: Card {
     
     // SB Vars
-    @IBInspectable public var title: String = "Welcome to XI Cards !"
+    /**
+     Text of the title label.
+     */
+    @IBInspectable public var title: String = "Welcome to XI Cards !" {
+        didSet{
+            titleLbl.text = title
+        }
+    }
+    /**
+     Max font size the title label.
+     */
     @IBInspectable public var titleSize: CGFloat = 26
-    @IBInspectable public var subtitle: String = "from the editors"
+    /**
+     Text of the subtitle label.
+     */
+    @IBInspectable public var subtitle: String = "from the editors" {
+        didSet{
+            subtitleLbl.text = subtitle.uppercased()
+        }
+    }
+    /**
+     Max font size the subtitle label.
+     */
     @IBInspectable public var subtitleSize: CGFloat = 26
-    @IBInspectable public var blurEffect: UIBlurEffectStyle = .extraLight
+    /**
+     Style for the blur effect.
+     */
+    @IBInspectable public var blurEffect: UIBlurEffectStyle = .extraLight {
+        didSet{
+            blurV.effect = UIBlurEffect(style: blurEffect)
+        }
+    }
     
     //Priv Vars
     var subtitleLbl = UILabel ()
@@ -34,10 +61,9 @@ import UIKit
         initialize()
     }
     
-    override  func initialize() {
+    override func initialize() {
         super.initialize()
         
-        self.delegate = self
         vibrancyV = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: UIBlurEffect(style: blurEffect)))
         backgroundIV.addSubview(blurV)
         blurV.contentView.addSubview(titleLbl)
@@ -70,21 +96,21 @@ import UIKit
         let blur = UIBlurEffect(style: blurEffect)
         blurV.effect = blur
         
-        layout(backgroundIV.bounds, animated: false, showingDetail: false)
+        layout()
     }
     
-    private func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    override func layout(animating: Bool = true) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.bounds)
         
         blurV.frame = CGRect(x: 0,
                              y: 0,
-                             width: rect.width,
+                             width: backgroundIV.bounds.width,
                              height: gimme.Y(42))
         
         vibrancyV.frame = blurV.frame
         
-        guard !animated else { return }
         
         subtitleLbl.frame = CGRect(x: insets,
                                    y: insets,
@@ -97,29 +123,7 @@ import UIKit
                                 height: gimme.Y(20))
         titleLbl.sizeToFit()
     }
-    
-    
-    override  func cardTapped() {
-        super.cardTapped()
-        delegate?.cardDidTapInside?(card: self)
-        
-    }
-}
 
-extension CardGroup: CardDelegate {
-    
-    public func cardIsShowingDetail(card: Card) {
-        layout(backgroundIV.bounds, animated: true, showingDetail: true)
-    }
-
-    public func cardIsHidingDetail(card: Card) {
-        layout(backgroundIV.bounds, animated: true, showingDetail: false)
-    }
-    
-    public func cardDidShowDetailView(card: Card) {
-        layout(backgroundIV.frame)
-    }
-    
 }
 
 

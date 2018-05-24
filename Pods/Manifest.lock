@@ -1,20 +1,24 @@
 PODS:
-  - Cards (1.2.1):
+  - Cards (1.3.2):
     - Player
-  - Player (0.8.3)
+  - Kingfisher (4.8.0)
+  - Player (0.8.4)
 
 DEPENDENCIES:
   - Cards
+  - Kingfisher (~> 4.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Cards
+    - Kingfisher
     - Player
 
 SPEC CHECKSUMS:
-  Cards: a7b6bc011d175d041a2b9995c1b14cb2008467af
-  Player: ce00516fdce5a44c644697200244bc4de7e50a24
+  Cards: 69e8c83deebd5ed5bad7062dba603ce76992f712
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
 
-PODFILE CHECKSUM: b163997d38339208e100633f7d9e79ce16164443
+PODFILE CHECKSUM: abec4beb2cf9d4672b8f2aaf398acb429891a936
 
 COCOAPODS: 1.5.0

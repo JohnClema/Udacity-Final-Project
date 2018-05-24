@@ -12,35 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let dataStack = CoreDataStackManager(modelName: "Model")!
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        let todayViewController = PictureOfTheDayViewController()
-        todayViewController.title = "Today's Picture"
-        todayViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-
-        let archiveViewController = ArchiveViewController()
-        archiveViewController.navigationItem.largeTitleDisplayMode = .always
-        archiveViewController.title = "Archive"
-        archiveViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
-
-        let settingsViewController = SettingsViewController()
-        settingsViewController.title = "Settings"
-        settingsViewController.tabBarItem =  UITabBarItem(tabBarSystemItem: .more, tag: 2)
-
-        let todayNavigationController = UINavigationController(rootViewController: todayViewController)
-        let archiveNavigationController = UINavigationController(rootViewController: archiveViewController)
-        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
-
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([todayNavigationController, archiveNavigationController, settingsNavigationController], animated: false)
-
+    
+    private func initialiseUI() {
+        let tabBarController = TabBarController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
-        
+    }
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        initialiseUI()
         return true
     }
 

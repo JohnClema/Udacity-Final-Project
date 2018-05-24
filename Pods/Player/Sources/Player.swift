@@ -424,25 +424,12 @@ open class Player: UIViewController {
     
     /// Updates playback to the specified time.
     ///
-    /// - Parameter time: The time to switch to move the playback.
-    open func seek(to time: CMTime) {
-        if let playerItem = self._playerItem {
-            return playerItem.seek(to: time)
-        } else {
-            _seekTimeRequested = time
-        }
-    }
-    
-    /// Updates playback to the specified time.
-    ///
     /// - Parameters:
     ///   - time: The time to switch to move the playback.
-    ///   - completionHandler: call block handler after seeking
-    open func seek(to time: CMTime, completionHandler: @escaping () -> Void) {
+    ///   - completionHandler: Call block handler after seeking/
+    open func seek(to time: CMTime, completionHandler: ((Bool) -> Swift.Void)? = nil) {
         if let playerItem = self._playerItem {
-            return playerItem.seek(to: time, completionHandler: { (seeked) in
-                completionHandler()
-            })
+            return playerItem.seek(to: time, completionHandler: completionHandler)
         } else {
             _seekTimeRequested = time
         }
@@ -454,9 +441,10 @@ open class Player: UIViewController {
     ///   - time: The time to switch to move the playback.
     ///   - toleranceBefore: The tolerance allowed before time.
     ///   - toleranceAfter: The tolerance allowed after time.
-    open func seekToTime(to time: CMTime, toleranceBefore: CMTime, toleranceAfter: CMTime) {
+    ///   - completionHandler: call block handler after seeking
+    open func seekToTime(to time: CMTime, toleranceBefore: CMTime, toleranceAfter: CMTime, completionHandler: ((Bool) -> Swift.Void)? = nil) {
         if let playerItem = self._playerItem {
-            return playerItem.seek(to: time, toleranceBefore: toleranceBefore, toleranceAfter: toleranceAfter)
+            return playerItem.seek(to: time, toleranceBefore: toleranceBefore, toleranceAfter: toleranceAfter, completionHandler: completionHandler)
         }
     }
     
