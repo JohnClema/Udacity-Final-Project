@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0520203020B7B853006D765A /* PictureOfTheDayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520202F20B7B853006D765A /* PictureOfTheDayDetailViewController.swift */; };
+		052CF76A20BAD315007B81EE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052CF76920BAD315007B81EE /* SettingsViewController.swift */; };
 		05577197209ABBC200F32892 /* Vacuum_NewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05577196209ABBC200F32892 /* Vacuum_NewsUITests.swift */; };
 		055771A5209ABBD000F32892 /* Vacuum_NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055771A4209ABBD000F32892 /* Vacuum_NewsTests.swift */; };
 		055771AD209AE23E00F32892 /* NASAAPODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055771AC209AE23E00F32892 /* NASAAPODClient.swift */; };
@@ -25,8 +26,6 @@
 		05D5136720B6665800DD93CA /* Picture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5136620B6665800DD93CA /* Picture+CoreDataProperties.swift */; };
 		05D5136920B66F4E00DD93CA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5136820B66F4E00DD93CA /* GradientView.swift */; };
 		05D6C1122096B50F0067B0CD /* PictureOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1112096B50F0067B0CD /* PictureOfTheDayViewController.swift */; };
-		05D6C1142096B5F20067B0CD /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */; };
-		05D6C1162096B5FD0067B0CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1152096B5FD0067B0CD /* SettingsViewController.swift */; };
 		05D6C1182096BBC00067B0CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D6C1172096BBC00067B0CD /* Constants.swift */; };
 		05DA9B54207B744800036BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA9B53207B744800036BA4 /* AppDelegate.swift */; };
 		05DA9B5D207B744A00036BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05DA9B5C207B744A00036BA4 /* Assets.xcassets */; };
@@ -53,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0520202F20B7B853006D765A /* PictureOfTheDayDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfTheDayDetailViewController.swift; sourceTree = "<group>"; };
+		052CF76920BAD315007B81EE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		05577194209ABBC200F32892 /* Vacuum NewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Vacuum NewsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05577196209ABBC200F32892 /* Vacuum_NewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vacuum_NewsUITests.swift; sourceTree = "<group>"; };
 		05577198209ABBC200F32892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,8 +74,6 @@
 		05D5136620B6665800DD93CA /* Picture+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Picture+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05D5136820B66F4E00DD93CA /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		05D6C1112096B50F0067B0CD /* PictureOfTheDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureOfTheDayViewController.swift; sourceTree = "<group>"; };
-		05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
-		05D6C1152096B5FD0067B0CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		05D6C1172096BBC00067B0CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05DA9B50207B744800036BA4 /* Vacuum News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vacuum News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DA9B53207B744800036BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +117,14 @@
 				0520202F20B7B853006D765A /* PictureOfTheDayDetailViewController.swift */,
 			);
 			path = "Picture Of The Day Detail";
+			sourceTree = "<group>";
+		};
+		052CF76820BAD2E4007B81EE /* Settings Screen */ = {
+			isa = PBXGroup;
+			children = (
+				052CF76920BAD315007B81EE /* SettingsViewController.swift */,
+			);
+			path = "Settings Screen";
 			sourceTree = "<group>";
 		};
 		05577195209ABBC200F32892 /* Vacuum NewsUITests */ = {
@@ -229,9 +235,8 @@
 				057B333A2086C8330098CAB9 /* Web Services */,
 				0520202E20B7B833006D765A /* Picture Of The Day Detail */,
 				056EBFCF20B53D2F0043C427 /* Picture Of The Day */,
+				052CF76820BAD2E4007B81EE /* Settings Screen */,
 				056EBFCC20B53CDF0043C427 /* Model.xcdatamodeld */,
-				05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */,
-				05D6C1152096B5FD0067B0CD /* SettingsViewController.swift */,
 				05DA9B5C207B744A00036BA4 /* Assets.xcassets */,
 				05DA9B5E207B744A00036BA4 /* LaunchScreen.storyboard */,
 				05DA9B61207B744A00036BA4 /* Info.plist */,
@@ -451,12 +456,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				055771B6209C2A6D00F32892 /* Picture.swift in Sources */,
+				052CF76A20BAD315007B81EE /* SettingsViewController.swift in Sources */,
 				056EBFD420B53EB40043C427 /* PictureOfTheDayCell.swift in Sources */,
 				05D5136920B66F4E00DD93CA /* GradientView.swift in Sources */,
 				057DFB2420B5034500353DAE /* UIUpdatesOnMain.swift in Sources */,
 				05D6C1122096B50F0067B0CD /* PictureOfTheDayViewController.swift in Sources */,
 				055771AF209AE2DB00F32892 /* NASAAPODConvenience.swift in Sources */,
-				05D6C1142096B5F20067B0CD /* ArchiveViewController.swift in Sources */,
 				05D6C1182096BBC00067B0CD /* Constants.swift in Sources */,
 				05D5136120B6595F00DD93CA /* TabBarController.swift in Sources */,
 				055771AD209AE23E00F32892 /* NASAAPODClient.swift in Sources */,
@@ -466,7 +471,6 @@
 				0520203020B7B853006D765A /* PictureOfTheDayDetailViewController.swift in Sources */,
 				05D5136720B6665800DD93CA /* Picture+CoreDataProperties.swift in Sources */,
 				05DA9B54207B744800036BA4 /* AppDelegate.swift in Sources */,
-				05D6C1162096B5FD0067B0CD /* SettingsViewController.swift in Sources */,
 				055771B4209C2A3000F32892 /* PictureModel.swift in Sources */,
 				056EBFC820B530120043C427 /* CoreDataStackManager.swift in Sources */,
 			);
@@ -505,7 +509,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -520,7 +528,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -536,7 +548,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -552,7 +568,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -683,7 +703,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum News/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -699,7 +722,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum News/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

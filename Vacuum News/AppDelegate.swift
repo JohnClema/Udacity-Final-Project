@@ -15,9 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let dataStack = CoreDataStackManager(modelName: "Model")!
 
     private func initialiseUI() {
-        let tabBarController = TabBarController()
+//        let tabBarController = TabBarController()
+        
+        let todayViewController = PictureOfTheDayViewController()
+        todayViewController.extendedLayoutIncludesOpaqueBars = true
+        todayViewController.navigationItem.largeTitleDisplayMode = .always
+        todayViewController.title = "Today's Picture"
+        let todayNavigationController = UINavigationController(rootViewController: todayViewController)
+
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = tabBarController
+        self.window?.rootViewController = todayNavigationController
         self.window?.makeKeyAndVisible()
     }
 

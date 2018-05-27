@@ -21,11 +21,6 @@ class TabBarController: UITabBarController {
         todayViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         todayViewController.extendedLayoutIncludesOpaqueBars = true
 
-        let archiveViewController = ArchiveViewController()
-        archiveViewController.navigationItem.largeTitleDisplayMode = .always
-        archiveViewController.title = "Archive"
-        archiveViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
-        archiveViewController.extendedLayoutIncludesOpaqueBars = true
         let settingsViewController = SettingsViewController()
         settingsViewController.title = "Settings"
         settingsViewController.tabBarItem =  UITabBarItem(tabBarSystemItem: .more, tag: 2)
@@ -33,8 +28,7 @@ class TabBarController: UITabBarController {
 
         
         let todayNavigationController = UINavigationController(rootViewController: todayViewController)
-        let archiveNavigationController = UINavigationController(rootViewController: archiveViewController)
         let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
-        self.setViewControllers([todayNavigationController, archiveNavigationController, settingsNavigationController], animated: false)
+        self.setViewControllers([todayNavigationController, settingsNavigationController], animated: false)
     }
 }

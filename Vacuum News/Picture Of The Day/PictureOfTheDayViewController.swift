@@ -54,7 +54,7 @@ class PictureOfTheDayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target:self, action: #selector(openSettings(_:)))
         
         self.view.backgroundColor = UIColor.black
         self.collectionView?.backgroundColor = UIColor.black
@@ -98,6 +98,14 @@ class PictureOfTheDayViewController: UIViewController {
     @objc private func refreshData(_ sender: Any) {
         // Fetch Weather Data
         getNextPhotos(fromDate: Date())
+    }
+    
+    @objc private func openSettings(_ sender: Any) {
+        // Fetch Weather Data
+        let settingsViewController = SettingsViewController()
+        self.navigationController?.present(settingsViewController, animated: true, completion: {
+            
+        })
     }
     
     func getNextPage() {

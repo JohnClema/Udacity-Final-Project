@@ -1,5 +1,5 @@
 //
-//  ArchiveViewController.swift
+//  SettingsViewController.swift
 //  Vacuum News
 //
 //  Created by John Clema on 30/4/18.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ArchiveViewController: UIViewController {
+class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blue
+        self.view.backgroundColor = .white
     }
 
 }
