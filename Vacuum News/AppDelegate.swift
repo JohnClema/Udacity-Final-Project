@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let dataStack = CoreDataStackManager(modelName: "Model")!
 
-    
     private func initialiseUI() {
         let tabBarController = TabBarController()
         self.window = UIWindow(frame: UIScreen.main.bounds)

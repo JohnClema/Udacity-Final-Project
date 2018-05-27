@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0520203020B7B853006D765A /* PictureOfTheDayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520202F20B7B853006D765A /* PictureOfTheDayDetailViewController.swift */; };
 		05577197209ABBC200F32892 /* Vacuum_NewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05577196209ABBC200F32892 /* Vacuum_NewsUITests.swift */; };
 		055771A5209ABBD000F32892 /* Vacuum_NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055771A4209ABBD000F32892 /* Vacuum_NewsTests.swift */; };
 		055771AD209AE23E00F32892 /* NASAAPODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055771AC209AE23E00F32892 /* NASAAPODClient.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0520202F20B7B853006D765A /* PictureOfTheDayDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfTheDayDetailViewController.swift; sourceTree = "<group>"; };
 		05577194209ABBC200F32892 /* Vacuum NewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Vacuum NewsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05577196209ABBC200F32892 /* Vacuum_NewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vacuum_NewsUITests.swift; sourceTree = "<group>"; };
 		05577198209ABBC200F32892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0520202E20B7B833006D765A /* Picture Of The Day Detail */ = {
+			isa = PBXGroup;
+			children = (
+				0520202F20B7B853006D765A /* PictureOfTheDayDetailViewController.swift */,
+			);
+			path = "Picture Of The Day Detail";
+			sourceTree = "<group>";
+		};
 		05577195209ABBC200F32892 /* Vacuum NewsUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +227,7 @@
 				055771B2209C2A2000F32892 /* Models */,
 				057B333F2086CAD50098CAB9 /* Storage */,
 				057B333A2086C8330098CAB9 /* Web Services */,
+				0520202E20B7B833006D765A /* Picture Of The Day Detail */,
 				056EBFCF20B53D2F0043C427 /* Picture Of The Day */,
 				056EBFCC20B53CDF0043C427 /* Model.xcdatamodeld */,
 				05D6C1132096B5F20067B0CD /* ArchiveViewController.swift */,
@@ -384,12 +395,14 @@
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -450,6 +463,7 @@
 				055771B1209AF19200F32892 /* DictionaryExtension.swift in Sources */,
 				056EBFCB20B5305D0043C427 /* NSManagedObject+Entity.swift in Sources */,
 				056EBFCE20B53CDF0043C427 /* Model.xcdatamodeld in Sources */,
+				0520203020B7B853006D765A /* PictureOfTheDayDetailViewController.swift in Sources */,
 				05D5136720B6665800DD93CA /* Picture+CoreDataProperties.swift in Sources */,
 				05DA9B54207B744800036BA4 /* AppDelegate.swift in Sources */,
 				05D6C1162096B5FD0067B0CD /* SettingsViewController.swift in Sources */,
@@ -491,11 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -510,11 +520,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -530,11 +536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -550,11 +552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum NewsTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-NewsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -685,10 +683,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum News/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -704,10 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQSR5T8AG4;
 				INFOPLIST_FILE = "Vacuum News/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "johnclema.Vacuum-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

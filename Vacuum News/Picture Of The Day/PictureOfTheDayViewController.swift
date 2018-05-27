@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 import Player
 import CoreData
 
@@ -28,7 +28,6 @@ class PictureOfTheDayViewController: UIViewController {
     var endDateLoaded: Date?
     let refreshControl = UIRefreshControl()
 
-    var selectedIndexes   = [IndexPath]()
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths : [IndexPath]!
     var updatedIndexPaths : [IndexPath]!
@@ -48,15 +47,20 @@ class PictureOfTheDayViewController: UIViewController {
         return fetchedResultsController
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        self.view.backgroundColor = UIColor.white
-        self.collectionView?.backgroundColor = UIColor.white
-        self.navigationController?.view.backgroundColor = UIColor.white
-        
-        self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = UIColor.black
+        self.collectionView?.backgroundColor = UIColor.black
+        self.navigationController?.view.backgroundColor = UIColor.black
+
+//        self.navigationController?.isNavigationBarHidden = true
         
         let flowLayout = UICollectionViewFlowLayout()
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
@@ -109,6 +113,7 @@ class PictureOfTheDayViewController: UIViewController {
         NASAAPODClient.sharedInstance().getPhotos(startDate: startDate, endDate: fromDate) { (success, error) in
             performUIUpdatesOnMain {
                 self.performFetch()
+                self.pictures = self.fetchedResultsController.fetchedObjects!
                 self.startDateLoaded = startDate
                 self.endDateLoaded = fromDate
                 self.collectionView?.reloadData()
@@ -139,6 +144,12 @@ extension PictureOfTheDayViewController : UICollectionViewDataSource, UICollecti
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let picture = self.pictures[indexPath.row]
+        let detailViewController = PictureOfTheDayDetailViewController(picture: picture)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
@@ -158,9 +169,7 @@ extension PictureOfTheDayViewController : UICollectionViewDataSource, UICollecti
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PictureOfTheDayCell
-        cell.backgroundColor = UIColor.white
-        cell.contentView.backgroundColor = UIColor.white
-        cell.pictureOfTheDay.backgroundColor = UIColor.white
+        
         let picture = fetchedResultsController.object(at: indexPath)
         if picture.title != nil {
             cell.title?.text = picture.title
@@ -168,8 +177,14 @@ extension PictureOfTheDayViewController : UICollectionViewDataSource, UICollecti
         if picture.urlString != nil {
             let url = URL(string: picture.urlString!)!
             if(picture.mediaType == "image") {
-                cell.pictureOfTheDay?.kf.indicatorType = .activity
-                cell.pictureOfTheDay?.kf.setImage(with: url)
+                cell.pictureOfTheDay?.sd_addActivityIndicator()
+                cell.pictureOfTheDay?.sd_imageTransition = .fade
+                cell.pictureOfTheDay.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+                    cell.pictureOfTheDay?.sd_removeActivityIndicator()
+                    cell.pictureOfTheDay.image = image
+                })
+                cell.pictureOfTheDay?.sd_setImage(with:url)
+//                cell.pictureOfTheDay?.kf.setImage(with: url)
                 cell.pictureOfTheDay.contentMode = .scaleAspectFill
             }
             if(picture.mediaType == "video") {
@@ -190,13 +205,11 @@ extension PictureOfTheDayViewController : UICollectionViewDelegateFlowLayout {
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
-//            + (flowLayout.minimumInteritemSpacing * CGFloat(1 - 1))
 //        / CGFloat(1)
-        let size = Int((collectionView.bounds.width - totalSpace) )
+        let size = Int((collectionView.bounds.width - totalSpace))
         return CGSize(width: size, height: size)
     }
 }
-
 
 extension PictureOfTheDayViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
