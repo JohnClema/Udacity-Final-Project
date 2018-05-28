@@ -1,30 +1,22 @@
 PODS:
-  - Cards (1.3.2):
-    - Player
-  - Kingfisher (4.8.0)
-  - Player (0.8.4)
+  - DeckTransition (2.0.0)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
-  - Cards
-  - Kingfisher (~> 4.0)
+  - DeckTransition (~> 2.0)
   - SDWebImage (~> 4.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - Cards
-    - Kingfisher
-    - Player
+    - DeckTransition
     - SDWebImage
 
 SPEC CHECKSUMS:
-  Cards: 69e8c83deebd5ed5bad7062dba603ce76992f712
-  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
-  Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
+  DeckTransition: 2300694f94fbeca2c103f365dc9dc09ffae14a4f
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 39dbb588616852bad180010eb8e8f871472f15db
+PODFILE CHECKSUM: 3ece6293f65bf79d4850c40849ec488bcc8ab365
 
 COCOAPODS: 1.5.0
