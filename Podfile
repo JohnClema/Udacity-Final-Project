@@ -6,7 +6,6 @@ target 'Vacuum News' do
   use_frameworks!
 
   # Pods for Vacuum News
-  pod 'Cards'
-  pod 'Kingfisher', '~> 4.0'
+  pod 'DeckTransition', '~> 2.0'
   pod 'SDWebImage', '~> 4.0'
 end

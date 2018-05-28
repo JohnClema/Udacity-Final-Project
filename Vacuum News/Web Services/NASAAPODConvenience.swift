@@ -23,9 +23,11 @@ extension NASAAPODClient {
     func picturesFromResults(results: [[String:AnyObject]]) {
         
         for result in results {
-            let picture = Picture(dictionary: result, context: self.sharedContext)
-            self.sharedContext.insert(picture)
-            self.sharedStack.save()
+            if (result[ResponseKeys.MediaType] as! String == "image") {
+                let picture = Picture(dictionary: result, context: self.sharedContext)
+                self.sharedContext.insert(picture)
+                self.sharedStack.save()
+            }
         }
     }
     

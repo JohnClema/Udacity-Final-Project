@@ -22,6 +22,7 @@ class PictureOfTheDayDetailViewController: UIViewController, UIScrollViewDelegat
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.largeTitleDisplayMode = .never
     }
+    
     convenience init(picture: Picture) {
         self.init(nibName: nil, bundle: nil)
         self.picture = picture
@@ -88,10 +89,7 @@ class PictureOfTheDayDetailViewController: UIViewController, UIScrollViewDelegat
 
         }
         self.scrollView?.contentSize = CGSize(width: self.view.frame.width, height: contentHeight)
-//        self.titleLabel = UILabel(
-//        self.datePublishedLabel: UILabel?
-//        self.explanatonUILabel?
-//        self.copyright = UILabel
+
         
         self.view.addSubview(scrollView!)
 
