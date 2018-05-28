@@ -10,9 +10,26 @@ import UIKit
 
 @IBDesignable open class CardGroupSliding: CardGroup {
 
-    @IBInspectable public var iconsSize: CGFloat = 80
-    @IBInspectable public var iconsRadius: CGFloat = 40
+    /**
+     Size for the collection view items.
+     */
+    @IBInspectable public var iconsSize: CGFloat = 80 {
+        didSet{
+            slidingCV.reloadData()
+        }
+    }
+    /**
+     Corner radius of the collection view items
+     */
+    @IBInspectable public var iconsRadius: CGFloat = 40 {
+        didSet{
+            slidingCV.reloadData()
+        }
+    }
     
+    /**
+     Data source for the collection view.
+     */
     public var icons: [UIImage]?
     
     // Priv vars
@@ -51,11 +68,7 @@ import UIKit
         blurV.removeFromSuperview()
         
         backgroundIV.backgroundColor = UIColor.white
-    }
-    
-    override open func didMoveToWindow() {
-        super.didMoveToWindow()
-        slidingCV.reloadData()
+        
         startSlide()
     }
     
@@ -63,33 +76,24 @@ import UIKit
         super.draw(rect)
         
         subtitleLbl.textColor = textColor.withAlphaComponent(0.4)
-        layout(backgroundIV.bounds)
+        layout(animating: false)
     }
     
-    private func layout(_ rect: CGRect, animated: Bool = false, showingDetail: Bool = false) {
+    override func layout(animating: Bool) {
+        super.layout(animating: animating)
         
-        let gimme = LayoutHelper(rect: rect)
+        let gimme = LayoutHelper(rect: backgroundIV.bounds)
         
         slidingCV.frame = CGRect(x: 0,
                                  y: gimme.Y(5, from: titleLbl),
                                  width: backgroundIV.frame.width,
-                                 height: rect.height - blurV.frame.height - insets )
+                                 height: backgroundIV.bounds.height - blurV.frame.height )
     }
     
-    override public func cardIsShowingDetail(card: Card) {
-        super.cardIsShowingDetail(card: card)
-        self.layout(backgroundIV.bounds, animated: true, showingDetail: true)
-    }
-
-    public func cardDidCloseDetailView(card: Card) {
-        self.layout(backgroundIV.bounds, animated: true, showingDetail: false)
-    }
-    
-    
-    //Sliding Logic
+    //MARK: - Sliding Logic
     
     public func startSlide() {
-        timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(self.slide), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.slide), userInfo: nil, repeats: true)
     }
 
     public func stopSlide() {
@@ -113,7 +117,7 @@ import UIKit
 }
 
 
-//MARK: - Collection View Delegates
+    //MARK: - Collection View Delegates
 
 extension CardGroupSliding: UICollectionViewDataSource {
     
@@ -138,7 +142,7 @@ extension CardGroupSliding: UICollectionViewDelegateFlowLayout{
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        iconsSize = collectionView.bounds.height/3 - layout.minimumLineSpacing
+        iconsSize = collectionView.frame.height/3 - layout.minimumLineSpacing
         return CGSize(width: iconsSize, height: iconsSize )
     }
 }

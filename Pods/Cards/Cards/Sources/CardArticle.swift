@@ -8,15 +8,41 @@
 
 import UIKit
 
-@IBDesignable class CardArticle: Card {
+@IBDesignable open class CardArticle: Card {
     
     // SB Vars
-    @IBInspectable public var title: String = "The Art of the Impossible"
+    /**
+     Text of the title label.
+     */
+    @IBInspectable public var title: String = "The Art of the Impossible" {
+        didSet{
+            titleLbl.text = title
+        }
+    }
+    /**
+     Max font size the title label.
+     */
     @IBInspectable public var titleSize: CGFloat = 26
-    @IBInspectable public var subtitle: String = "Inside the extraordinary world of Monument Valley 2"
+    /**
+     Text of the subtitle label.
+     */
+    @IBInspectable public var subtitle: String = "Inside the extraordinary world of Monument Valley 2" {
+        didSet{
+            subtitleLbl.text = subtitle
+        }
+    }
+    /**
+     Max font size the subtitle label.
+     */
     @IBInspectable public var subtitleSize: CGFloat = 17
-    @IBInspectable public var category: String = "world premiere"
-    @IBInspectable public var blurEffect: UIBlurEffectStyle = UIBlurEffectStyle.extraLight
+    /**
+     Text of the category label.
+     */
+    @IBInspectable public var category: String = "world premiere" {
+        didSet{
+            categoryLbl.text = category.uppercased()
+        }
+    }
 
     //Priv Vars
     var titleLbl = UILabel ()
@@ -36,7 +62,6 @@ import UIKit
     override  func initialize() {
         super.initialize()
         
-        self.delegate = self
         backgroundIV.addSubview(titleLbl)
         backgroundIV.addSubview(subtitleLbl)
         backgroundIV.addSubview(categoryLbl)
@@ -78,20 +103,14 @@ import UIKit
         subtitleLbl.numberOfLines = 0
         subtitleLbl.textAlignment = .left
      
-        self.layout(backgroundIV.frame)
+        self.layout()
         
     }
     
-    override  func cardTapped() {
-        super.cardTapped()
-        delegate?.cardDidTapInside?(card: self)
-    }
-    
-    
-    private func layout(_ rect: CGRect) {
+    override func layout(animating: Bool = true) {
+        super.layout(animating: animating)
         
-        
-        let gimme  = LayoutHelper(rect: rect)
+        let gimme  = LayoutHelper(rect: backgroundIV.bounds)
         
         categoryLbl.frame = CGRect(x: insets,
                                    y: insets,
@@ -102,22 +121,14 @@ import UIKit
                                 y: gimme.Y(1, from: categoryLbl),
                                 width: gimme.X(80),
                                 height: gimme.Y(17))
-       
+        
         subtitleLbl.frame = CGRect(x: insets,
                                    y: gimme.RevY(0, height: gimme.Y(14)) - insets,
                                    width: gimme.X(80),
                                    height: gimme.Y(14))
         titleLbl.sizeToFit()
-        
     }
     
-}
-
-extension CardArticle: CardDelegate {
-    
-    public func cardDidShowDetailView(card: Card) { layout(backgroundIV.bounds) }
-    public func cardWillCloseDetailView(card: Card) { layout(originalFrame) }
-
 }
 
 
