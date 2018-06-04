@@ -146,19 +146,32 @@ class PictureOfTheDayViewController: UIViewController, MFMailComposeViewControll
         timeInterval.day = -27
         let startDate = Calendar.current.date(byAdding: timeInterval, to: fromDate)!
         NASAAPODClient.sharedInstance().getPhotos(startDate: startDate, endDate: fromDate) { (success, error) in
-            performUIUpdatesOnMain {
-                self.performFetch()
-                if(self.pictures.count == 0) {
+            if(!success && error != nil) {
+                performUIUpdatesOnMain {
                     self.activityIndicator?.stopAnimating()
+
+                    let alertController = UIAlertController(title: "Error", message: "App failed to get photos, try checking your internet connection.", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "Close Alert", style: .default, handler: nil)
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            } else {
+                performUIUpdatesOnMain {
+                    self.performFetch()
+                    if(self.pictures.count == 0) {
+                        self.activityIndicator?.stopAnimating()
+                    }
+                    self.collectionView?.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
                 self.pictures = self.fetchedResultsController.fetchedObjects!
                 UserDefaults.standard.set(startDate, forKey: "startDate")
-
+                
                 self.startDateLoaded = startDate
                 self.endDateLoaded = fromDate
-                self.collectionView?.reloadData()
-                self.refreshControl.endRefreshing()
             }
+            
+
         }
     }
     
